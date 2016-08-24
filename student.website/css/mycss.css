@@ -1,0 +1,9 @@
+/*************************** for navigation.php **********************/
+.tab {
+    display: none;
+}
+
+.navbar-nav-active {
+    color: #fed136;
+}
+/*************************** end for navigation.php ******************/
