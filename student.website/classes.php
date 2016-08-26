@@ -131,7 +131,7 @@
                                 <li>Client: Round Icons</li>
                                 <li>Category: Graphic Design</li>
                             </ul>
-                            <form name="sentMessage" id="???" action="class.register" method="post" novalidate>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
                                 <div class="col-lg-12 text-center">
                                     <div id="success"></div>
                                     <button type="submit" class="btn btn-xl">Register this class!</button>
