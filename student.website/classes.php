@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Our Classes</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">You can view our classes and register them after login!</h3>
             </div>
         </div>
         <div class="row">
@@ -14,7 +14,7 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/roundicons.png" class="img-responsive" alt="">
+                    <img src="img/classes/ping-pong.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
                     <h4>Ping-pong</h4>
@@ -28,7 +28,7 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/startup-framework.png" class="img-responsive" alt="">
+                    <img src="img/classes/chess.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
                     <h4>Chess</h4>
@@ -42,7 +42,7 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/treehouse.png" class="img-responsive" alt="">
+                    <img src="img/classes/chinese.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
                     <h4>Chinese</h4>
@@ -56,7 +56,7 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/golden.png" class="img-responsive" alt="">
+                    <img src="img/classes/spanish.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
                     <h4>Spanish</h4>
@@ -70,11 +70,11 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/escape.png" class="img-responsive" alt="">
+                    <img src="img/classes/japanese.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Another class</h4>
-                    <p class="text-muted">Don't want to think of class name</p>
+                    <h4>Japanese</h4>
+                    <p class="text-muted">Japanese</p>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
@@ -84,11 +84,11 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="img/portfolio/dreams.png" class="img-responsive" alt="">
+                    <img src="img/classes/math.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>The last class</h4>
-                    <p class="text-muted">Finally!</p>
+                    <h4>Math</h4>
+                    <p class="text-muted">Math</p>
                 </div>
             </div>
         </div>
@@ -114,23 +114,54 @@
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
                             <h2>Ping-pong class</h2>
-                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/roundicons-free.png" alt="">
-                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt
-                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae,
-                                nostrum, reiciendis facere nemo!</p>
-                            <p>
-                                <strong>Want these icons in this portfolio item sample?</strong>You can download 60 of
-                                them for free, courtesy of <a
-                                    href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">RoundIcons.com</a>,
-                                or you can purchase the 1500 icon set <a
-                                    href="https://getdpd.com/cart/hoplink/18076?referrer=bvbo4kax5k8ogc">here</a>.</p>
-                            <ul class="list-inline">
-                                <li>Date: July 2014</li>
-                                <li>Client: Round Icons</li>
-                                <li>Category: Graphic Design</li>
-                            </ul>
+                            <p class="item-intro text-muted">A healthy and popular sport</p>
+                            <img class="img-responsive img-centered" src="img/classes/ping-pong.jpg" alt="">
+                            <div class="row-classes">
+                                <table class="table-classes">
+                                    <tr>
+                                        <td>
+                                            Time:
+                                        </td>
+                                        <td>
+                                            TBD
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Teacher:
+                                        </td>
+                                        <td>
+                                            TBD
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Maximum number of students:
+                                        </td>
+                                        <td>
+                                            TBD
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Available seats:
+                                        </td>
+                                        <td>
+                                            Not available
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Register due date:
+                                        </td>
+                                        <td>
+                                            TBD
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <p><br/>
+                            </p>
                             <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
                                 <div class="col-lg-12 text-center">
                                     <div id="success"></div>
@@ -138,7 +169,9 @@
                                 </div>
                             </form>
                         </div>
-                        <p><br/><hr></p>
+                        <p><br/>
+                        <hr>
+                        </p>
                         <button type="button" class="btn btn-primary" data-dismiss="modal"><i
                                 class="fa fa-times"></i>
                             Close Ping-pong
@@ -165,9 +198,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Heading</h2>
+                            <h2>Chess</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/startup-framework-preview.png"
+                            <img class="img-responsive img-centered" src="img/classes/chess.jpg"
                                  alt="">
                             <p><a href="http://designmodo.com/startup/?u=787">Startup Framework</a> is a website builder
                                 for professionals. Startup Framework contains components and complex blocks (PSD+HTML
@@ -176,10 +209,20 @@
                                 projects, allowing you to create hundreds of solutions for your future projects.</p>
                             <p>You can preview Startup Framework <a href="http://designmodo.com/startup/?u=787">here</a>.
                             </p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                    class="fa fa-times"></i> Close Project
-                            </button>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button type="submit" class="btn btn-xl">Register this class!</button>
+                                </div>
+                            </form>
                         </div>
+                        <p><br/>
+                        <hr>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Close Chess
+                        </button>
                     </div>
                 </div>
             </div>
@@ -202,9 +245,9 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
-                            <h2>Project Name</h2>
+                            <h2>Chinese</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/treehouse-preview.png" alt="">
+                            <img class="img-responsive img-centered" src="img/classes/chinese.jpg" alt="">
                             <p>Treehouse is a free PSD web template built by <a
                                     href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. This is bright and
                                 spacious design perfect for people or startup companies looking to showcase their apps
@@ -212,10 +255,20 @@
                             <p>You can download the PSD template in this portfolio sample item at <a
                                     href="http://freebiesxpress.com/gallery/treehouse-free-psd-web-template/">FreebiesXpress.com</a>.
                             </p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                    class="fa fa-times"></i> Close Project
-                            </button>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button type="submit" class="btn btn-xl">Register this class!</button>
+                                </div>
+                            </form>
                         </div>
+                        <p><br/>
+                        <hr>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Close Ping-pong
+                        </button>
                     </div>
                 </div>
             </div>
@@ -238,9 +291,9 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
-                            <h2>Project Name</h2>
+                            <h2>Spanish</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/golden-preview.png" alt="">
+                            <img class="img-responsive img-centered" src="img/classes/spanish.jpg" alt="">
                             <p>Start Bootstrap's Agency theme is based on Golden, a free PSD website template built by
                                 <a href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Golden is a modern and
                                 clean one page web template that was made exclusively for Best PSD Freebies. This
@@ -249,10 +302,20 @@
                             <p>You can download the PSD template in this portfolio sample item at <a
                                     href="http://freebiesxpress.com/gallery/golden-free-one-page-web-template/">FreebiesXpress.com</a>.
                             </p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                    class="fa fa-times"></i> Close Project
-                            </button>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button type="submit" class="btn btn-xl">Register this class!</button>
+                                </div>
+                            </form>
                         </div>
+                        <p><br/>
+                        <hr>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Close Ping-pong
+                        </button>
                     </div>
                 </div>
             </div>
@@ -275,9 +338,9 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
-                            <h2>Project Name</h2>
+                            <h2>Japanese</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/escape-preview.png" alt="">
+                            <img class="img-responsive img-centered" src="img/classes/japanese.jpg" alt="">
                             <p>Escape is a free PSD web template built by <a
                                     href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Escape is a one page
                                 web template that was designed with agencies in mind. This template is ideal for those
@@ -286,10 +349,20 @@
                             <p>You can download the PSD template in this portfolio sample item at <a
                                     href="http://freebiesxpress.com/gallery/escape-one-page-psd-web-template/">FreebiesXpress.com</a>.
                             </p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                    class="fa fa-times"></i> Close Project
-                            </button>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button type="submit" class="btn btn-xl">Register this class!</button>
+                                </div>
+                            </form>
                         </div>
+                        <p><br/>
+                        <hr>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Close Ping-pong
+                        </button>
                     </div>
                 </div>
             </div>
@@ -312,9 +385,9 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <!-- Project Details Go Here -->
-                            <h2>Project Name</h2>
+                            <h2>Math</h2>
                             <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                            <img class="img-responsive img-centered" src="img/portfolio/dreams-preview.png" alt="">
+                            <img class="img-responsive img-centered" src="img/classes/math.jpg" alt="">
                             <p>Dreams is a free PSD web template built by <a
                                     href="https://www.behance.net/MathavanJaya">Mathavan Jaya</a>. Dreams is a modern
                                 one page web template designed for almost any purpose. It’s a beautiful template that’s
@@ -322,10 +395,20 @@
                             <p>You can download the PSD template in this portfolio sample item at <a
                                     href="http://freebiesxpress.com/gallery/dreams-free-one-page-web-template/">FreebiesXpress.com</a>.
                             </p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i
-                                    class="fa fa-times"></i> Close Project
-                            </button>
+                            <form name="RegisterClass" id="???" action="class.register" method="post" novalidate>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div>
+                                    <button type="submit" class="btn btn-xl">Register this class!</button>
+                                </div>
+                            </form>
                         </div>
+                        <p><br/>
+                        <hr>
+                        </p>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Close Ping-pong
+                        </button>
                     </div>
                 </div>
             </div>
