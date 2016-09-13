@@ -1,0 +1,552 @@
+-- MySQL dump 10.13  Distrib 5.7.12, for osx10.11 (x86_64)
+--
+-- Host: localhost    Database: southlake
+-- ------------------------------------------------------
+-- Server version	5.7.12
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `AccountInfo`
+--
+
+DROP TABLE IF EXISTS `AccountInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AccountInfo` (
+  `AccountID` int(10) unsigned NOT NULL,
+  `AccountTypeID` tinyint(3) unsigned NOT NULL,
+  `EmailAddress` varchar(50) NOT NULL,
+  `Password` varchar(20) NOT NULL,
+  `Name1` varchar(30) NOT NULL,
+  `Relationship1` varchar(20) DEFAULT NULL,
+  `PhoneNum1` varchar(15) NOT NULL,
+  `EmailAddress1` varchar(50) DEFAULT NULL,
+  `Name2` varchar(30) DEFAULT NULL,
+  `Relationship2` varchar(20) DEFAULT NULL,
+  `PhoneNum2` varchar(15) DEFAULT NULL,
+  `EmailAddress2` varchar(50) DEFAULT NULL,
+  `HomeAddressLine1` varchar(50) NOT NULL,
+  `HomeAddressLine2` varchar(50) DEFAULT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  `IsLocked` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AccountID`),
+  UNIQUE KEY `EmailAddress` (`EmailAddress`),
+  KEY `AccountTypeID` (`AccountTypeID`),
+  CONSTRAINT `accountinfo_ibfk_1` FOREIGN KEY (`AccountID`) REFERENCES `StudentInfo` (`AccountID`),
+  CONSTRAINT `accountinfo_ibfk_10` FOREIGN KEY (`AccountID`) REFERENCES `Agreement` (`CreatorID`),
+  CONSTRAINT `accountinfo_ibfk_11` FOREIGN KEY (`AccountID`) REFERENCES `TeachingInfo` (`TeacherID`),
+  CONSTRAINT `accountinfo_ibfk_2` FOREIGN KEY (`AccountID`) REFERENCES `ClassInfo` (`DefaultTeacherID`),
+  CONSTRAINT `accountinfo_ibfk_3` FOREIGN KEY (`AccountID`) REFERENCES `RegistrationInfo` (`ApproverID`),
+  CONSTRAINT `accountinfo_ibfk_4` FOREIGN KEY (`AccountID`) REFERENCES `LessonInfo` (`TeacherID`),
+  CONSTRAINT `accountinfo_ibfk_5` FOREIGN KEY (`AccountID`) REFERENCES `LessonInfo` (`CreatorID`),
+  CONSTRAINT `accountinfo_ibfk_6` FOREIGN KEY (`AccountID`) REFERENCES `TeachingInfo` (`TeachingID`),
+  CONSTRAINT `accountinfo_ibfk_7` FOREIGN KEY (`AccountID`) REFERENCES `PaymentHistory` (`CreatorID`),
+  CONSTRAINT `accountinfo_ibfk_8` FOREIGN KEY (`AccountID`) REFERENCES `RequestInfo` (`AccountID`),
+  CONSTRAINT `accountinfo_ibfk_9` FOREIGN KEY (`AccountID`) REFERENCES `CheckInHistory` (`AccountID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AccountInfo`
+--
+
+LOCK TABLES `AccountInfo` WRITE;
+/*!40000 ALTER TABLE `AccountInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AccountInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `AccountInfomation`
+--
+
+DROP TABLE IF EXISTS `AccountInfomation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AccountInfomation` (
+  `AccountID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `AccountType` varchar(1) NOT NULL,
+  `ID` int(5) unsigned NOT NULL,
+  `EmailAddress` varchar(40) NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  `CreateTime` date NOT NULL,
+  `IsActive` varchar(1) NOT NULL,
+  PRIMARY KEY (`AccountID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AccountInfomation`
+--
+
+LOCK TABLES `AccountInfomation` WRITE;
+/*!40000 ALTER TABLE `AccountInfomation` DISABLE KEYS */;
+INSERT INTO `AccountInfomation` VALUES (1,'T',1,'teacher@teacher.com','teacher','2016-08-07','Y'),(2,'S',1,'student@student.com','student','2016-08-07','Y'),(3,'M',1,'manager@manager.com','manager','2016-08-07','Y');
+/*!40000 ALTER TABLE `AccountInfomation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Agreement`
+--
+
+DROP TABLE IF EXISTS `Agreement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Agreement` (
+  `AgreementID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `StudentID` int(10) unsigned NOT NULL,
+  `StudentName` varchar(30) NOT NULL,
+  `AfterschoolStart` date DEFAULT NULL,
+  `AfterschoolEnd` date DEFAULT NULL,
+  `LanguageTutoring` varchar(100) DEFAULT NULL,
+  `LanguageHours` int(4) unsigned DEFAULT NULL,
+  `SubjectTutoring` varchar(100) DEFAULT NULL,
+  `SubjectHours` int(4) unsigned DEFAULT NULL,
+  `ArtMusic` varchar(100) DEFAULT NULL,
+  `ArtMusicSessions` int(4) unsigned DEFAULT NULL,
+  `ChessPinpong` varchar(100) DEFAULT NULL,
+  `ChessPingpongSessions` int(4) unsigned DEFAULT NULL,
+  `ExamPrep` varchar(100) DEFAULT NULL,
+  `ExamprepSessions` int(4) unsigned DEFAULT NULL,
+  `ProgramFee` int(10) NOT NULL,
+  `Enrollment` int(10) NOT NULL,
+  `Assessment` int(10) NOT NULL,
+  `Promotion` int(10) DEFAULT NULL,
+  `PaymentTotal` int(10) NOT NULL,
+  `PaymentDate` date NOT NULL,
+  `PaymentType` varchar(10) NOT NULL,
+  `ReceivedBy` varchar(30) NOT NULL,
+  `CreatorID` int(10) unsigned NOT NULL,
+  `CreateTime` datetime NOT NULL,
+  PRIMARY KEY (`AgreementID`),
+  KEY `StudentID` (`StudentID`),
+  KEY `CreatorID` (`CreatorID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Agreement`
+--
+
+LOCK TABLES `Agreement` WRITE;
+/*!40000 ALTER TABLE `Agreement` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Agreement` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CheckInHistory`
+--
+
+DROP TABLE IF EXISTS `CheckInHistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CheckInHistory` (
+  `CheckInID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `AccountID` int(10) unsigned NOT NULL,
+  `CheckInTime` datetime NOT NULL,
+  `CheckOutTime` datetime NOT NULL,
+  PRIMARY KEY (`CheckInID`),
+  KEY `AccountID` (`AccountID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CheckInHistory`
+--
+
+LOCK TABLES `CheckInHistory` WRITE;
+/*!40000 ALTER TABLE `CheckInHistory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CheckInHistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ClassInfo`
+--
+
+DROP TABLE IF EXISTS `ClassInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ClassInfo` (
+  `ClassID` int(10) unsigned NOT NULL,
+  `ClassName` varchar(20) NOT NULL,
+  `Picture` longblob,
+  `DescripPara1` text NOT NULL,
+  `DescripPara2` text,
+  `DescripPara3` text,
+  `MaxSeatNum` int(4) NOT NULL,
+  `DueDateRegister` datetime NOT NULL,
+  `Price` int(10) NOT NULL,
+  `ClassTypeID` tinyint(4) NOT NULL,
+  `StartDate` date NOT NULL,
+  `EndDate` date NOT NULL,
+  `DefaultTeacherID` int(10) unsigned NOT NULL,
+  `IsPublished` tinyint(4) NOT NULL DEFAULT '0',
+  `CreateTime` date NOT NULL,
+  `UpdateTime` date NOT NULL,
+  PRIMARY KEY (`ClassID`),
+  UNIQUE KEY `ClassName` (`ClassName`),
+  KEY `DefaultTeacherID` (`DefaultTeacherID`),
+  KEY `ClassTypeID` (`ClassTypeID`),
+  CONSTRAINT `classinfo_ibfk_1` FOREIGN KEY (`ClassID`) REFERENCES `RegistrationInfo` (`ClassID`),
+  CONSTRAINT `classinfo_ibfk_2` FOREIGN KEY (`ClassID`) REFERENCES `LessonInfo` (`ClassID`),
+  CONSTRAINT `classinfo_ibfk_3` FOREIGN KEY (`ClassID`) REFERENCES `PaymentHistory` (`ClassID`),
+  CONSTRAINT `classinfo_ibfk_4` FOREIGN KEY (`ClassID`) REFERENCES `RequestInfo` (`ClassID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ClassInfo`
+--
+
+LOCK TABLES `ClassInfo` WRITE;
+/*!40000 ALTER TABLE `ClassInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ClassInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CodeAccountTypeID`
+--
+
+DROP TABLE IF EXISTS `CodeAccountTypeID`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CodeAccountTypeID` (
+  `AccountTypeID` tinyint(3) unsigned NOT NULL,
+  `AccountType` varchar(10) NOT NULL,
+  PRIMARY KEY (`AccountTypeID`),
+  UNIQUE KEY `AccountType` (`AccountType`),
+  CONSTRAINT `codeaccounttypeid_ibfk_1` FOREIGN KEY (`AccountTypeID`) REFERENCES `AccountInfo` (`AccountTypeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CodeAccountTypeID`
+--
+
+LOCK TABLES `CodeAccountTypeID` WRITE;
+/*!40000 ALTER TABLE `CodeAccountTypeID` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CodeAccountTypeID` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CodeClassTypeID`
+--
+
+DROP TABLE IF EXISTS `CodeClassTypeID`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CodeClassTypeID` (
+  `ClassTypeID` tinyint(4) NOT NULL,
+  `ClassType` varchar(20) NOT NULL,
+  PRIMARY KEY (`ClassTypeID`),
+  CONSTRAINT `codeclasstypeid_ibfk_1` FOREIGN KEY (`ClassTypeID`) REFERENCES `ClassInfo` (`ClassTypeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CodeClassTypeID`
+--
+
+LOCK TABLES `CodeClassTypeID` WRITE;
+/*!40000 ALTER TABLE `CodeClassTypeID` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CodeClassTypeID` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `CodeRequestStatusID`
+--
+
+DROP TABLE IF EXISTS `CodeRequestStatusID`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `CodeRequestStatusID` (
+  `RequestStatusID` tinyint(3) unsigned NOT NULL,
+  `RequestStatus` varchar(30) NOT NULL,
+  PRIMARY KEY (`RequestStatusID`),
+  UNIQUE KEY `RequestStatus` (`RequestStatus`),
+  CONSTRAINT `coderequeststatusid_ibfk_1` FOREIGN KEY (`RequestStatusID`) REFERENCES `RequestInfo` (`RequestStatusID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CodeRequestStatusID`
+--
+
+LOCK TABLES `CodeRequestStatusID` WRITE;
+/*!40000 ALTER TABLE `CodeRequestStatusID` DISABLE KEYS */;
+/*!40000 ALTER TABLE `CodeRequestStatusID` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `LessonInfo`
+--
+
+DROP TABLE IF EXISTS `LessonInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `LessonInfo` (
+  `LessonID` int(10) unsigned NOT NULL,
+  `ClassID` int(10) unsigned NOT NULL,
+  `LessonDate` date NOT NULL,
+  `LessonTime` time NOT NULL,
+  `Duration_h` int(3) DEFAULT NULL,
+  `TeacherID` int(10) unsigned NOT NULL,
+  `TeacherCheckIn` datetime DEFAULT NULL,
+  `TeacherCheckOut` datetime DEFAULT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  `CreatorID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`LessonID`),
+  KEY `ClassID` (`ClassID`),
+  KEY `TeacherID` (`TeacherID`),
+  KEY `CreatorID` (`CreatorID`),
+  CONSTRAINT `lessoninfo_ibfk_1` FOREIGN KEY (`LessonID`) REFERENCES `TeachingInfo` (`LessonID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `LessonInfo`
+--
+
+LOCK TABLES `LessonInfo` WRITE;
+/*!40000 ALTER TABLE `LessonInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `LessonInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PaymentHistory`
+--
+
+DROP TABLE IF EXISTS `PaymentHistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PaymentHistory` (
+  `PaymentID` int(10) unsigned NOT NULL,
+  `PaymentDate` date NOT NULL,
+  `PaymentTime` time NOT NULL,
+  `PayerName` varchar(30) NOT NULL,
+  `AmountInDollars` decimal(10,0) NOT NULL,
+  `CardType` tinyint(4) DEFAULT NULL,
+  `CheckNo` varchar(20) DEFAULT NULL,
+  `IsCash` tinyint(4) DEFAULT NULL,
+  `StudentName` varchar(30) NOT NULL,
+  `StudentID` int(10) unsigned NOT NULL,
+  `ClassID` int(10) unsigned NOT NULL,
+  `ReceivedBy` varchar(30) NOT NULL,
+  `Note` text,
+  `CreatorID` int(11) unsigned NOT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  PRIMARY KEY (`PaymentID`),
+  KEY `StudentID` (`StudentID`),
+  KEY `ClassID` (`ClassID`),
+  KEY `CreatorID` (`CreatorID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PaymentHistory`
+--
+
+LOCK TABLES `PaymentHistory` WRITE;
+/*!40000 ALTER TABLE `PaymentHistory` DISABLE KEYS */;
+/*!40000 ALTER TABLE `PaymentHistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `RegistrationInfo`
+--
+
+DROP TABLE IF EXISTS `RegistrationInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RegistrationInfo` (
+  `RegistrationID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ClassID` int(10) unsigned NOT NULL,
+  `StudentID` int(10) unsigned NOT NULL,
+  `HoursOrSessionsBought` int(10) unsigned DEFAULT NULL,
+  `StartDate` date DEFAULT NULL,
+  `EndDate` date DEFAULT NULL,
+  `ApproverID` int(10) unsigned DEFAULT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  `Note` text,
+  PRIMARY KEY (`RegistrationID`),
+  KEY `ClassID` (`ClassID`),
+  KEY `StudentID` (`StudentID`),
+  KEY `ApproverID` (`ApproverID`),
+  KEY `StudentID_2` (`StudentID`),
+  KEY `ClassID_2` (`ClassID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RegistrationInfo`
+--
+
+LOCK TABLES `RegistrationInfo` WRITE;
+/*!40000 ALTER TABLE `RegistrationInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RegistrationInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `RequestInfo`
+--
+
+DROP TABLE IF EXISTS `RequestInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RequestInfo` (
+  `RequestID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `RequestTypeID` tinyint(3) unsigned NOT NULL,
+  `Subject` varchar(100) NOT NULL,
+  `EmailAddress` varchar(50) NOT NULL,
+  `AccountID` int(10) unsigned DEFAULT NULL,
+  `ParentName` varchar(30) NOT NULL,
+  `ClassID` int(10) unsigned DEFAULT NULL,
+  `PhoneNum` varchar(15) NOT NULL,
+  `Relationship` varchar(20) NOT NULL,
+  `Name2` varchar(30) DEFAULT NULL,
+  `Relationship2` varchar(20) DEFAULT NULL,
+  `PhoneNum2` varchar(15) DEFAULT NULL,
+  `EmailAddress2` varchar(50) DEFAULT NULL,
+  `HomeAddress` varchar(50) NOT NULL,
+  `HomeAddress2` varchar(50) DEFAULT NULL,
+  `RequestStatusID` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `ProcessorID` int(10) unsigned DEFAULT NULL,
+  `IPAddress` varchar(15) NOT NULL,
+  `Proxy` varchar(50) NOT NULL,
+  `Note` text,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  PRIMARY KEY (`RequestID`),
+  KEY `RequestType` (`RequestTypeID`),
+  KEY `ClassID` (`ClassID`),
+  KEY `ProcessorID` (`ProcessorID`),
+  KEY `RequestStatusID` (`RequestStatusID`),
+  KEY `AccountID` (`AccountID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RequestInfo`
+--
+
+LOCK TABLES `RequestInfo` WRITE;
+/*!40000 ALTER TABLE `RequestInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `RequestInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `StudentInfo`
+--
+
+DROP TABLE IF EXISTS `StudentInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `StudentInfo` (
+  `StudentID` int(10) unsigned NOT NULL,
+  `StudentPhoto` longblob,
+  `StudentName` varchar(30) NOT NULL,
+  `AccountID` int(10) unsigned NOT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  PRIMARY KEY (`StudentID`),
+  KEY `AccountID` (`AccountID`),
+  CONSTRAINT `studentinfo_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `RegistrationInfo` (`StudentID`),
+  CONSTRAINT `studentinfo_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `TeachingInfo` (`StudentID`),
+  CONSTRAINT `studentinfo_ibfk_3` FOREIGN KEY (`StudentID`) REFERENCES `PaymentHistory` (`StudentID`),
+  CONSTRAINT `studentinfo_ibfk_4` FOREIGN KEY (`StudentID`) REFERENCES `Agreement` (`StudentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `StudentInfo`
+--
+
+LOCK TABLES `StudentInfo` WRITE;
+/*!40000 ALTER TABLE `StudentInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `StudentInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TeachingInfo`
+--
+
+DROP TABLE IF EXISTS `TeachingInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TeachingInfo` (
+  `TeachingID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `LessonID` int(10) unsigned NOT NULL,
+  `TeacherID` int(10) unsigned NOT NULL,
+  `StudentID` int(10) unsigned NOT NULL,
+  `IsHappy` tinyint(4) DEFAULT NULL,
+  `IsActive` tinyint(4) DEFAULT NULL,
+  `HasAccident` tinyint(4) DEFAULT NULL,
+  `MajorComments` text,
+  `StudentCheckIn` datetime DEFAULT NULL,
+  `StudentCheckOut` datetime DEFAULT NULL,
+  `CreateTime` datetime NOT NULL,
+  `UpdateTime` datetime NOT NULL,
+  PRIMARY KEY (`TeachingID`),
+  KEY `LessonID` (`LessonID`),
+  KEY `StudentID` (`StudentID`),
+  KEY `TeacherID` (`TeacherID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TeachingInfo`
+--
+
+LOCK TABLES `TeachingInfo` WRITE;
+/*!40000 ALTER TABLE `TeachingInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TeachingInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `coderequesttypeid`
+--
+
+DROP TABLE IF EXISTS `coderequesttypeid`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `coderequesttypeid` (
+  `RequestTypeID` tinyint(3) unsigned NOT NULL,
+  `RequestType` varchar(20) NOT NULL,
+  PRIMARY KEY (`RequestTypeID`),
+  UNIQUE KEY `RequestType` (`RequestType`),
+  CONSTRAINT `coderequesttypeid_ibfk_1` FOREIGN KEY (`RequestTypeID`) REFERENCES `RequestInfo` (`RequestTypeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `coderequesttypeid`
+--
+
+LOCK TABLES `coderequesttypeid` WRITE;
+/*!40000 ALTER TABLE `coderequesttypeid` DISABLE KEYS */;
+/*!40000 ALTER TABLE `coderequesttypeid` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-08-25  0:50:40
