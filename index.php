@@ -37,6 +37,7 @@
     <!-- All the scripts here -->
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -52,7 +53,10 @@
     <script src="js/agency.min.js"></script>
 
     <!-- My javascript -->
+    <!-- Jssor slider -->
+    <script type="text/javascript" src="js/jssor.slider-21.1.5.mini.js"></script>
     <script src="js/myjs.js"></script>
+
     <!-- end of scripts-->
 
 </head>
@@ -72,41 +76,19 @@
     <?php include("classes.php"); ?>
 
     <!-- About Section -->
-    <?php include("about.php"); ?>
-
-    <!-- Login Section -->
-    <?php include("login.php"); ?>
-    
-    <!-- Clients Aside -->
-    <aside class="clients">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/envato.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/designmodo.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/themeforest.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <a href="#">
-                        <img src="img/logos/creative-market.jpg" class="img-responsive img-centered" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </aside>
+    <?php include("gallery.php"); ?>
 
     <!-- Contact Section -->
     <?php include("contact.php"); ?>
+
+    <?php
+    if (isset($_SESSION['stausername'])) {
+        //<!-- Myclasses Section -->
+        include("myclasses.php");
+    } else {
+        include("login.php");
+    }
+    ?>
 
     <!-- Footer -->
     <?php include("footer.php"); ?>

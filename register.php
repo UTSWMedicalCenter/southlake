@@ -16,7 +16,7 @@
                             <h2>Register Form</h2>
                             <p class="item-intro text-muted">*You can create an account by submitting this form</p>
                             <p class="item-intro text-muted">*After getting your account, you will be able to select your class!</p>
-                            <form name="RegisterAccount" id="contactForm" action="account.register" method="post" novalidate>
+                            <form name="RegisterAccount" id="registerForm" action="account.register" method="post" novalidate>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Your name *" id="name" required
                                            data-validation-required-message="Please enter your name.">
@@ -40,21 +40,6 @@
                                            placeholder="Your relationship with your child *" id="phonenum"
                                            required
                                            data-validation-required-message="Please enter your phone number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Another parent name"
-                                           id="name2">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Another email address"
-                                           id="email2">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Another phone number"
-                                           id="phonenum2">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
